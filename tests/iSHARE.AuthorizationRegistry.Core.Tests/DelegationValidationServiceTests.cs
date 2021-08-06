@@ -40,7 +40,7 @@ namespace iSHARE.AuthorizationRegistry.Core.Tests
             var sut = new DelegationValidationService(delegationServiceMock.Object);
 
             //Act
-            var result = sut.ValidateCopy(policyJson, claimsPrincipal);
+            var result = sut.ValidateCopy(policyJson, claimsPrincipal.ToString());
 
             //Assert
             result.Error.ShouldBe("Policy issuer and access subject are required.");
@@ -74,7 +74,7 @@ namespace iSHARE.AuthorizationRegistry.Core.Tests
             var sut = new DelegationValidationService(delegationServiceMock.Object);
 
             //Act
-            var result = sut.ValidateCopy(policyJson, claimsPrincipal);
+            var result = sut.ValidateCopy(policyJson, claimsPrincipal.ToString());
 
             //Assert
             result.Error.ShouldBe("Policy issuer must be equal to your party id.");
@@ -108,7 +108,7 @@ namespace iSHARE.AuthorizationRegistry.Core.Tests
             var sut = new DelegationValidationService(delegationServiceMock.Object);
 
             //Act
-            var result = sut.ValidateCopy(policyJson, claimsPrincipal);
+            var result = sut.ValidateCopy(policyJson, claimsPrincipal.ToString());
 
             //Assert
             result.Success.ShouldBe(true);
@@ -142,7 +142,7 @@ namespace iSHARE.AuthorizationRegistry.Core.Tests
             var sut = new DelegationValidationService(delegationServiceMock.Object);
 
             //Act
-            var result = await sut.ValidateCreate(policyJson, claimsPrincipal);
+            var result = await sut.ValidateCreate(policyJson, claimsPrincipal.ToString());
 
             //Assert
             result.Error.ShouldBe("Policy issuer and access subject are required.");
@@ -176,7 +176,7 @@ namespace iSHARE.AuthorizationRegistry.Core.Tests
             var sut = new DelegationValidationService(delegationServiceMock.Object);
 
             //Act
-            var result = await sut.ValidateCreate(policyJson, claimsPrincipal);
+            var result = await sut.ValidateCreate(policyJson, claimsPrincipal.ToString());
 
             //Assert
             result.Error.ShouldBe("Policy issuer must be equal to your party id.");
@@ -215,7 +215,7 @@ namespace iSHARE.AuthorizationRegistry.Core.Tests
             var sut = new DelegationValidationService(delegationServiceMock.Object);
 
             //Act
-            var result = await sut.ValidateCreate(policyJson, claimsPrincipal);
+            var result = await sut.ValidateCreate(policyJson, claimsPrincipal.ToString());
 
             //Assert
             result.Error.ShouldBe("The combination policyIssuer - accessSubject already exists.");
@@ -249,7 +249,7 @@ namespace iSHARE.AuthorizationRegistry.Core.Tests
             var sut = new DelegationValidationService(delegationServiceMock.Object);
 
             //Act
-            var result = await sut.ValidateCreate(policyJson, claimsPrincipal);
+            var result = await sut.ValidateCreate(policyJson, claimsPrincipal.ToString());
 
             //Assert
             result.Success.ShouldBe(true);
@@ -284,7 +284,7 @@ namespace iSHARE.AuthorizationRegistry.Core.Tests
             var sut = new DelegationValidationService(delegationServiceMock.Object);
 
             //Act
-            var result = await sut.ValidateEdit(arId, policyJson, claimsPrincipal);
+            var result = await sut.ValidateEdit(arId, policyJson, claimsPrincipal.ToString());
 
             //Assert
             result.Error.ShouldBe("Policy issuer and access subject are required.");
@@ -327,7 +327,7 @@ namespace iSHARE.AuthorizationRegistry.Core.Tests
             var sut = new DelegationValidationService(delegationServiceMock.Object);
 
             //Act
-            var result = await sut.ValidateEdit(arId, policyJson, claimsPrincipal);
+            var result = await sut.ValidateEdit(arId, policyJson, claimsPrincipal.ToString());
 
             //Assert
             result.Error.ShouldBe("The combination policyIssuer - accessSubject must remain unmodified.");
@@ -366,7 +366,7 @@ namespace iSHARE.AuthorizationRegistry.Core.Tests
             var sut = new DelegationValidationService(delegationServiceMock.Object);
 
             //Act
-            var result = await sut.ValidateEdit(arId, policyJson, claimsPrincipal);
+            var result = await sut.ValidateEdit(arId, policyJson, claimsPrincipal.ToString());
 
             //Assert
             result.Success.ShouldBe(true);
